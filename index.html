@@ -74,15 +74,25 @@
 			<thead>
 				<tr>
 					<th v-for="it in colNames">
-							<input type="checkbox" v-model="checkedNames">
-  							<label for={{it.col}}>{{it.col}}</label>
-  							 	<select v-model="selected">
-    							<option disabled value="">请选择</option>
-    							<option>总和(sum)</option>
-    							<option>均值(avg)</option>
-    							<option>最大值(max)</option>
-    							<option>最小值(min)</option>
+							<input type="checkbox">
+  							<label :id="getId(it.col)">{{it.col}}</label>
+  							 	<select @change="changeAgg($event,it.col)">
+    							<option value="">请选择</option>
+    							<option value="1">总和(sum)</option>
+    							<option value="2">均值(avg)</option>
+    							<option value="3">最大值(max)</option>
+    							<option value="4">最小值(min)</option>
  								</select>
+					</th>
+					<th>
+						<input type="checkbox" disabled="">
+  						<label>展示图表</label>
+						<select v-model="pictures"  @change="changePic($event)">
+    							<option value="1">柱状图</option>
+    							<option value="2">折线图</option>
+    							<option value="3">饼图</option>
+    							<option value="4">3D柱状图</option>
+ 						</select>
 					</th>
 					<td><button type="button" class="btn btn-success" v-on:click="tableSelect">提交</button></td>
 				</tr>
@@ -104,6 +114,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script type="text/javascript" src="js/sql_li.js"></script>
 	<script type="text/javascript" src="highcharts/highcharts.js"></script>
 <script src="highcharts/modules/exporting.js"></script>
