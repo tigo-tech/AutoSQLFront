@@ -1,5 +1,5 @@
 var sqlLi = new Vue({
-  el: '#sqlLi',
+  el: '#sql',
   data: {
     items: [
     	{ sqlTable: 'Item' },
